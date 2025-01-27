@@ -4,19 +4,28 @@
 set scrolloff=5
 set history=1000
 
+
 " status bar
 set showmode
+
+" Use the system clipboard
+set clipboard+=unnamed
 
 " leader
 map <space> <nop>
 let mapleader="\<space>"
+
+" which-key
+set which-key
+set notimeout
 
 " find and replace
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set gdefault
+set visualbell
+
 nmap <leader>nh :noh<CR>
 
 " ideavim settings
@@ -59,6 +68,15 @@ nmap <leader>6 <Action>(GoToTab6)
 nmap <leader>7 <Action>(GoToTab7)
 nmap <leader>8 <Action>(GoToTab8)
 nmap <leader>9 <Action>(GoToTab9)
+let g:WhichKeyDesc_goto_tab1 = "<leader>1"
+let g:WhichKeyDesc_goto_tab2 = "<leader>2"
+let g:WhichKeyDesc_goto_tab3 = "<leader>3"
+let g:WhichKeyDesc_goto_tab4 = "<leader>4"
+let g:WhichKeyDesc_goto_tab5 = "<leader>5"
+let g:WhichKeyDesc_goto_tab6 = "<leader>6"
+let g:WhichKeyDesc_goto_tab7 = "<leader>7"
+let g:WhichKeyDesc_goto_tab8 = "<leader>8"
+let g:WhichKeyDesc_goto_tab9 = "<leader>9"
 
 " tab
 map <leader>sh <Action>(MoveTabLeft)
@@ -70,7 +88,7 @@ map <leader>sV <Action>(SplitVertically)
 
 nmap <C-p> <Action>(JumpToLastWindow)
 nmap <M-i> <Action>(PrevSplitter)
-nmap <M-o> <Action>(NextSplitter)
+map <M-o> <Action>(NextSplitter)
 nmap <C-k> <C-w>k
 nmap <C-j> <C-w>j
 nmap <C-h> <C-w>h
@@ -101,12 +119,14 @@ nmap <leader>yp <Action>(CopyAbsolutePath)
 nmap <leader>rf <Action>(RecentFiles)
 nmap <leader>rl <Action>(RecentLocations)
 nmap <leader>rp <Action>(ManageRecentProjects)
-nmap <leader>sh <Action>(LocalHistory.ShowHistory)
+" nmap <leader>sh <Action>(LocalHistory.ShowHistory)
 nmap <leader>sf <Action>(ShowFilePath)
 nmap <leader>si <Action>(SelectIn)
 nmap <leader>fp <Action>(FindInPath)
 nmap <leader>rp <Action>(ReplaceInPath)
 nmap <leader>sw <Action>($SearchWeb)
+let g:WhichKeyDesc_file_opt = "<leader>o File"
+let g:WhichKeyDesc_file_opt_open_file = "<leader>of Open File"
 
 " tag
 nmap <leader>fu <Action>(FindUsages)
@@ -234,23 +254,23 @@ set argtextobj
 
 " jump-motion (required idea plugin: IdeaVim-EasyMotion, AceJump)
 set easymotion
+let g:EasyMotion_override_acejump = 0
 
 " highlight yank (bundle plugin)
 set highlightedyank
 let g:highlightedyank_highlight_duration = "1000"
 let g:highlightedyank_highlight_color = "rgba(57, 197, 187, 155)"
 
+
 " translation (required idea plugin: Translation)
-nmap \\tt <Action>($ShowTranslationDialogAction)
-nmap \\ts <Action>($TranslateTextComponent)
-nmap \\ti <Action>($InclusiveTranslateAction)
-nmap \\te <Action>($ExclusiveTranslateAction)
+" nmap \\tt <Action>($ShowTranslationDialogAction)
+" nmap \\ts <Action>($TranslateTextComponent)
+" nmap \\ti <Action>($InclusiveTranslateAction)
+" nmap \\te <Action>($ExclusiveTranslateAction)
 
 " string manipulate (required idea plugin: String Manipulation)
-nmap <leader>ss <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
+" nmap <leader>ss <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
 
-" code screenshot (required idea plugin: Code Screenshots)
-nmap \\cs <Action>(one.util.ideaplugin.screenshoter.CopyImageAction)
 
 " surround (bundle plugin)
 " usage: https://github.com/tpope/vim-surround
@@ -258,13 +278,16 @@ set surround
 
 " exchange (bundle plugin)
 " usage: https://github.com/tommcdo/vim-exchange
+" cx
 set exchange
 
 " nerdtree (bundle plugin)
 set NERDTree
+nmap <leader>e :NERDTreeToggle<CR>
 
 " replace with register (bundle plugin)
 " usage: https://github.com/vim-scripts/ReplaceWithRegister
+" [count]["x]gr{motion}
 set ReplaceWithRegister
 
 " continuous shift (a formatter should help you)
@@ -272,4 +295,4 @@ xnoremap < <gv
 xnoremap > >gv
 
 " alias
-nmap <C-a> ggVG"+y
+" nmap <C-a> ggVG"+y
