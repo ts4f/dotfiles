@@ -1,0 +1,17 @@
+[init]
+	defaultBranch = main
+[user]
+	name = ts4f
+	email = 17165475+ts4f@users.noreply.github.com
+[core]
+	editor = nvim
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/tsaf/.local/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/home/tsaf/.local/bin/gh auth git-credential
+[pull]
+	rebase = true
+[alias]
+	adog = log --all --decorate --oneline --graph
